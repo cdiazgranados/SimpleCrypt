@@ -60,13 +60,28 @@ public class ROT13  {
 
     public String decrypt(String text) {
 
+
         return encrypt(text);
     }
 
     public static String rotate(String s, Character c) {
-        ROT13 rotate = new ROT13('a', c);
+        ROT13 rotate = new ROT13('A', c);
+        StringBuilder first = new StringBuilder();
+        StringBuilder second = new StringBuilder();
+        int key = rotate.cryptKey();
 
-        return rotate.crypt(s);
+        for (int i = 0; i < s.length(); i++) {
+            if(s.charAt(i) >= c){
+                int j = s.charAt(i) - key;
+                char newChar = (char) j;
+                second.append(newChar);
+            } else {
+                first.append(s.charAt(i));
+            }
+
+        }
+
+        return rotate.crypt(first.toString()) + second;
     }
 
 }
