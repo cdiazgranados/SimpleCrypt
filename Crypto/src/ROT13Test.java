@@ -103,6 +103,31 @@ public class ROT13Test {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void ceaserCiphor_KeyTest() {
+        // Given
+        CeaserCipher cc = new CeaserCipher();
+        int expected = 13;
+        int actual = cc.cryptKey();
+
+        // Then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void ceaserCiphor_CryptTest() {
+        // Given
+        CeaserCipher cc = new CeaserCipher();
+        String Q1 = "Why did the chicken cross the road?";
+        System.out.println(Q1);
+
+        // When
+        String actual = cc.crypt(cc.crypt(Q1));
+        System.out.println(actual);
+        // Then
+        assertTrue(actual.equals(Q1));
+    }
+
 
 
 }

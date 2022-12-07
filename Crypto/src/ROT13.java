@@ -12,6 +12,8 @@ public class ROT13  {
     }
 
     ROT13() {
+        cs = 'a';
+        cf = 'n';
     }
 
     public int cryptKey() {
